@@ -119,3 +119,43 @@
     @apply bg-background text-foreground;
   }
 }
+
+.custom-shape-divider-bottom-1744318148 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1744318148 svg {
+    position: relative;
+    display: block;
+    width: calc(147% + 1.3px);
+    height: 200px;
+}
+
+.custom-shape-divider-bottom-1744318148 .shape-fill {
+    fill: #FFFFFF;
+}
+
+.homeBackground {
+  background-image: url('https://res.cloudinary.com/debiu7z1b/image/upload/v1744315395/pexels-divinetechygirl-1181396_efaumx.webp');
+  background-position: center;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.homeBackground::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
