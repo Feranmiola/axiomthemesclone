@@ -4,8 +4,24 @@ import Navbar from "./Navbar";
 const Header = () => {
   return (
     <div className="h-screen w-full">
-      <div className="flex flex-col w-screen h-[80%] homeBackground bg-white relative outline-none">
+      <div className="flex flex-col w-screen h-screen homeBackground bg-white relative outline-none">
         <Navbar />
+        <div className="h-full w-full items-center justify-center flex flex-col space-y-3">
+          <p className="text-[72px] text-white font-bold leading-none text-center">
+            Turning Creative Ideas
+            <br />
+            into Success
+          </p>
+          <p className="text-center text-base text-white">
+            Consectetur adipiscing elit, sed do eiusmod tempor incididunt <br />
+            dolore magna aliqua quis nostrud exerc.
+          </p>
+
+          <button className="flex items-center justify-center px-7 py-3 font-semibold mt-5 mb-24 text-white bg-blue-400 hover:bg-blue-500 transition ease-in-out rounded-3xl cursor-pointer duration-200">
+            Discover Now
+          </button>
+        </div>
+
         <div className="custom-shape-divider-bottom-1744318148">
           <svg
             data-name="Layer 1"
