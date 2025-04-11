@@ -1,4 +1,6 @@
+import { ArrowRight, MailIcon } from "lucide-react";
 import React from "react";
+import { Checkbox } from "./ui/checkbox";
 
 const Footer = () => {
   return (
@@ -17,7 +19,7 @@ const Footer = () => {
         </svg>
       </div>
 
-      <div className="flex w-full max-w-[80%] flex-col items-center h-full justify-between py-10 pt-[200px]">
+      <div className="flex w-full max-w-[65%] flex-col items-center h-full justify-between py-10 pt-[200px]">
         <div className="w-full flex items-start justify-between">
           <div className="flex flex-col space-y-5">
             <p className="font-bold text-white text-xl">Office</p>
@@ -41,6 +43,78 @@ const Footer = () => {
               </a>
             </div>
           </div>
+          <div className="flex flex-col space-y-5">
+            <p className="font-bold text-white text-xl">Links</p>
+            <div className="flex flex-col space-y-3">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+                Home
+              </p>
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+                Services
+              </p>
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+                About Us
+              </p>
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+                Our Team
+              </p>
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+                Contacts
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col space-y-5">
+            <p className="font-bold text-white text-xl">Socials</p>
+            <div className="flex flex-col space-y-3">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+                Facebook
+              </p>
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+                Tritter
+              </p>
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+                Dribble
+              </p>
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+                Instagram
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col space-y-5">
+            <p className="font-bold text-white text-xl">Newsletter</p>
+            <div className="flex flex-row items-center space-x-2">
+              <div className="px-4 py-3 rounded-2xl flex flex-row items-center space-x-2 bg-[#131921]">
+                <MailIcon size={20} color="#8F919F" />
+                <input
+                  className="bg-transparent outline-none focus:outline-none text-white placeholder:text-[#8F919F] text-sm"
+                  placeholder="Enter Your Email Address"
+                />
+              </div>
+
+              <div className="p-2 bg-[#400AF5] rounded-full flex items-center justify-center cursor-pointer">
+                <ArrowRight color="white" />
+              </div>
+            </div>
+            <div className="flex flex-row items-center space-x-1">
+              <Checkbox id="privacyPolicy" />
+
+              <label
+                htmlFor="privacyPolicy"
+                className="font-light text-[#8F919F]"
+              >
+                I agree to the{" "}
+                <span className="font-medium underline underline-offset-4 transition ease-in-out cursor-pointer opacity-60 hover:opacity-100">
+                  Privacy Policy
+                </span>
+                .
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-t-[#1D2938] w-full pt-5">
+          <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200">
+            AxiomThemes © 2025. All Rights Reserved.
+          </p>
         </div>
       </div>
     </div>
