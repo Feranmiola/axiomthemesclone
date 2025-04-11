@@ -46,9 +46,12 @@ const Navbar = () => {
 
       <div className="flex flex-row space-x-10">
         <div className="flex flex-row space-x-2 items-center">
-          <div className="flex items-center justify-center w-[40px] h-[40px] bg-blue-950 rounded-full">
+          <a
+            href="tel:+18408412569"
+            className="flex items-center justify-center w-[40px] h-[40px] bg-blue-950 rounded-full"
+          >
             <PhoneCall size={20} color="white" />
-          </div>
+          </a>
           <a
             href="tel:+18408412569"
             className="text-white text-xl font-bold cursor-pointer"
