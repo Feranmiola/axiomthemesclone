@@ -9,6 +9,7 @@ import Sponsors from "@/Components/Sponsors";
 import Subscribe from "@/Components/Subscribe";
 import Testimonial from "@/Components/Testimonial";
 import WhoWeAre from "@/Components/WhoWeAre";
+import ScrollToTop from "@/Components/ScrollToTop";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
 
       <Articles />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
