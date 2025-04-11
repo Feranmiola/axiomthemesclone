@@ -2,6 +2,7 @@ import CreativeAgency from "@/Components/CreativeAgency";
 import CreativeSolutions from "@/Components/CreativeSolutions";
 import Header from "@/Components/Header";
 import Metrics from "@/Components/Metrics";
+import Subscribe from "@/Components/Subscribe";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <CreativeAgency />
       <Metrics />
       <CreativeSolutions />
+      <Subscribe />
     </div>
   );
 }

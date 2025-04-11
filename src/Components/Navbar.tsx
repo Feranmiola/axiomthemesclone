@@ -6,7 +6,7 @@ import { Sheet, SheetContent } from "./ui/sheet";
 const Navbar = () => {
   const [isSearchSheetOpen, setIsSearchSheetOpen] = useState(false);
   return (
-    <div className="w-screen flex flex-row p-10 items-center justify-between">
+    <div className="w-full flex flex-row p-10 items-center justify-between">
       <div className="flex flex-row space-x-18">
         <a href="/">
           <img
