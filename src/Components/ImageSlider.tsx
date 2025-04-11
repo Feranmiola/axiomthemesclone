@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const images = [
@@ -14,6 +14,8 @@ const images = [
 
 const ImageSlider = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
   const x = useMotionValue(0);
   const boundedX = useTransform(x, (value) => {
     if (!sliderRef.current) return value;
@@ -23,37 +25,42 @@ const ImageSlider = () => {
   });
 
   return (
-    <motion.div
-      ref={sliderRef}
-      className="flex justify-center cursor-move items-center overflow-hidden py-20"
-      whileTap={{ cursor: "grabbing" }}
-    >
+    <div ref={containerRef} className="py-20">
       <motion.div
-        drag="x"
-        dragConstraints={sliderRef}
-        style={{ x: boundedX }}
-        className="flex gap-10 items-center pl-[400px] select-none"
+        ref={sliderRef}
+        className="flex justify-center cursor-move items-center overflow-hidden"
+        whileTap={{ cursor: "grabbing" }}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        {images.map((image, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.2 }}
-            className={`relative ${
-              i % 2 === 0 ? "min-w-[400px] h-auto" : "min-w-[400px] h-auto"
-            } pointer-events-none`}
-          >
-            <img
-              src={image}
-              alt={`Slide ${i + 1}`}
-              className="w-full h-full object-cover rounded-lg"
-              draggable="false"
-            />
-          </motion.div>
-        ))}
+        <motion.div
+          drag="x"
+          dragConstraints={sliderRef}
+          style={{ x: boundedX }}
+          className="flex gap-10 items-center pl-[400px] select-none"
+        >
+          {images.map((image, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              className={`relative ${
+                i % 2 === 0 ? "min-w-[400px] h-auto" : "min-w-[400px] h-auto"
+              } pointer-events-none`}
+            >
+              <img
+                src={image}
+                alt={`Slide ${i + 1}`}
+                className="w-full h-full object-cover rounded-lg"
+                draggable="false"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

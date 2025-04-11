@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  useInView,
+} from "framer-motion";
 import { useRef, useState } from "react";
 
 const blogPosts = [
@@ -57,6 +63,8 @@ const blogPosts = [
 const Articles = () => {
   const [currentSet, setCurrentSet] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
   const x = useMotionValue(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -95,15 +103,39 @@ const Articles = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-center flex-col space-y-10 py-20">
-      <div className="flex flex-col space-y-2 items-center">
-        <p>OUR BLOG</p>
-        <p className="text-[54px] font-medium leading-none">Latest articles</p>
-      </div>
+    <div
+      ref={containerRef}
+      className="w-full flex items-center justify-center flex-col space-y-10 py-20"
+    >
+      <motion.div
+        className="flex flex-col space-y-2 items-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          OUR BLOG
+        </motion.p>
+        <motion.p
+          className="text-[54px] font-medium leading-none"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          Latest articles
+        </motion.p>
+      </motion.div>
 
       <motion.div
         ref={sliderRef}
         className="w-[1410px] overflow-hidden cursor-drag"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
       >
         <motion.div
           drag="x"
@@ -113,7 +145,13 @@ const Articles = () => {
           onDragEnd={handleDragEnd}
         >
           {blogPosts.map((post, index) => (
-            <motion.div key={index} className="flex-shrink-0 w-[450px]">
+            <motion.div
+              key={index}
+              className="flex-shrink-0 w-[450px]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 1 + index * 0.1 }}
+            >
               <div className="flex flex-col space-y-2">
                 <div className="w-full h-[300px] overflow-hidden rounded-3xl">
                   <motion.img
@@ -124,30 +162,55 @@ const Articles = () => {
                     transition={{ duration: 0.3 }}
                   />
                 </div>
-                <p>{post.category}</p>
-                <p className="text-3xl font-medium">{post.title}</p>
-                <div className="flex flex-row items-center space-x-2">
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ duration: 0.8, delay: 1.2 + index * 0.1 }}
+                >
+                  {post.category}
+                </motion.p>
+                <motion.p
+                  className="text-3xl font-medium"
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ duration: 0.8, delay: 1.4 + index * 0.1 }}
+                >
+                  {post.title}
+                </motion.p>
+                <motion.div
+                  className="flex flex-row items-center space-x-2"
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ duration: 0.8, delay: 1.6 + index * 0.1 }}
+                >
                   <p className="text-[#A4A8B6]">{post.date}</p>
                   <div className="rounded-full bg-[#A4A8B6] w-1 h-1"></div>
                   <p className="text-[#A4A8B6]">{post.comments}</p>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
         </motion.div>
       </motion.div>
 
-      <div className="flex space-x-2">
+      <motion.div
+        className="flex space-x-2"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8, delay: 2 }}
+      >
         {Array.from({ length: totalSets }).map((_, index) => (
-          <div
+          <motion.div
             key={index}
             className={`w-3 h-3 rounded-full transition-colors duration-300 cursor-pointer ${
               index === currentSet ? "bg-blue-500" : "bg-gray-300"
             }`}
             onClick={() => handleSetChange(index)}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
           />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

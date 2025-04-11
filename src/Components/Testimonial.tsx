@@ -1,7 +1,13 @@
 "use client";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  useInView,
+} from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import QuoteIcon from "./Icons/QuoteIcon";
 
@@ -32,6 +38,8 @@ const testimonials = [
 const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
   const x = useMotionValue(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -89,16 +97,32 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center py-20">
-      <div className="flex flex-row items-center justify-center space-x-5">
-        <div
+    <div
+      ref={containerRef}
+      className="w-full flex flex-col items-center justify-center py-20"
+    >
+      <motion.div
+        className="flex flex-row items-center justify-center space-x-5"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <motion.div
           className="p-2 border rounded-full cursor-pointer hover:bg-gray-100 transition-colors"
           onClick={handlePrev}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <ArrowLeft />
-        </div>
+        </motion.div>
 
-        <motion.div ref={sliderRef} className="w-[800px] overflow-hidden">
+        <motion.div
+          ref={sliderRef}
+          className="w-[800px] overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           <motion.div
             drag="x"
             dragConstraints={sliderRef}
@@ -110,6 +134,9 @@ const Testimonial = () => {
               <motion.div
                 key={index}
                 className="w-[800px] flex-shrink-0 flex flex-col items-center space-y-5"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
               >
                 <img
                   src={testimonial.image}
@@ -134,15 +161,22 @@ const Testimonial = () => {
           </motion.div>
         </motion.div>
 
-        <div
+        <motion.div
           className="p-2 border rounded-full cursor-pointer hover:bg-gray-100 transition-colors"
           onClick={handleNext}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <ArrowRight />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="flex space-x-2 mt-8">
+      <motion.div
+        className="flex space-x-2 mt-8"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
         {testimonials.map((_, index) => (
           <div
             key={index}
@@ -151,7 +185,7 @@ const Testimonial = () => {
             }`}
           />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

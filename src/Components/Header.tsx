@@ -1,25 +1,50 @@
+"use client";
 import React from "react";
 import Navbar from "./Navbar";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Header = () => {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+
   return (
     <div className="h-screen w-full">
       <div className="flex flex-col w-full h-screen homeBackground bg-[#E0E4E9] relative outline-none">
         <Navbar />
-        <div className="h-full w-full items-center justify-center flex flex-col space-y-3">
-          <p className="text-[72px] text-white font-bold leading-none text-center">
+        <div
+          ref={containerRef}
+          className="h-full w-full items-center justify-center flex flex-col space-y-3"
+        >
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-[72px] text-white font-bold leading-none text-center"
+          >
             Turning Creative Ideas
             <br />
             into Success
-          </p>
-          <p className="text-center text-base text-white">
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center text-base text-white"
+          >
             Consectetur adipiscing elit, sed do eiusmod tempor incididunt <br />
             dolore magna aliqua quis nostrud exerc.
-          </p>
+          </motion.p>
 
-          <button className="flex items-center justify-center px-7 py-3 font-semibold mt-5 mb-24 text-white bg-blue-400 hover:bg-blue-500 transition ease-in-out rounded-3xl cursor-pointer duration-200">
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            whileHover={{ backgroundColor: "#3b82f6" }}
+            className="flex items-center justify-center px-7 py-3 font-semibold mt-5 mb-24 text-white bg-blue-400 rounded-3xl cursor-pointer transition-colors duration-200"
+          >
             Discover Now
-          </button>
+          </motion.button>
         </div>
 
         <div className="custom-shape-divider-bottom-1744318148">
