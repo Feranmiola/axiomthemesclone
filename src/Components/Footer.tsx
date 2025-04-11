@@ -31,7 +31,7 @@ const Footer = () => {
               </p>
               <a
                 href="mailto:info@email.com"
-                className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max"
+                className="text-[#8F919F] cursor-pointer hover:text-white transition-all ease-in-out duration-200 relative group w-max"
               >
                 info@email.com
                 <span className="absolute left-0 bottom-0 h-[1px] bg-[#8F919F] w-full group-hover:w-0 transition-all duration-300 origin-left group-hover:transition-all group-hover:duration-300 group-hover:origin-left"></span>
@@ -47,23 +47,23 @@ const Footer = () => {
           <div className="flex flex-col space-y-5">
             <p className="font-bold text-white text-xl">Links</p>
             <div className="flex flex-col space-y-3">
-              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative group w-max">
                 Home
                 <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </p>
-              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative group w-max">
                 Services
                 <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </p>
-              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative group w-max">
                 About Us
                 <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </p>
-              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative group w-max">
                 Our Team
                 <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </p>
-              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative group w-max">
                 Contacts
                 <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </p>
@@ -72,19 +72,19 @@ const Footer = () => {
           <div className="flex flex-col space-y-5">
             <p className="font-bold text-white text-xl">Socials</p>
             <div className="flex flex-col space-y-3">
-              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative group w-max">
                 Facebook
                 <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </p>
-              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative group w-max">
                 Tritter
                 <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </p>
-              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative group w-max">
                 Dribble
                 <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </p>
-              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative group w-max">
+              <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative group w-max">
                 Instagram
                 <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
               </p>
@@ -122,7 +122,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-t-[#1D2938] w-full pt-5">
-          <p className="text-[#8F919F] cursor-pointer hover:text-white transition-colors ease-in-out duration-200 relative">
+          <p className="text-[#8F919F] cursor-pointer hover:text-white transition-all hover:translate-x-1 inline-block ease-in-out duration-200 relative">
             AxiomThemes © 2025. All Rights Reserved.
           </p>
         </div>
