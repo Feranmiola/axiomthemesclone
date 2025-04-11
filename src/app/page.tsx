@@ -1,4 +1,5 @@
 import CreativeAgency from "@/Components/CreativeAgency";
+import CreativeSolutions from "@/Components/CreativeSOlutions";
 import Header from "@/Components/Header";
 import Metrics from "@/Components/Metrics";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Header />
       <CreativeAgency />
       <Metrics />
+      <CreativeSolutions />
     </div>
   );
 }
