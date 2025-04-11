@@ -157,3 +157,24 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+
+.custom-shape-divider-top-1744380682 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1744380682 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 95px;
+}
+
+.custom-shape-divider-top-1744380682 .shape-fill {
+    fill: #E0E4E9;
+}

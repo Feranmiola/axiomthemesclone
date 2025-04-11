@@ -1,6 +1,7 @@
 import Articles from "@/Components/Articles";
 import CreativeAgency from "@/Components/CreativeAgency";
 import CreativeSolutions from "@/Components/CreativeSolutions";
+import Footer from "@/Components/Footer";
 import Header from "@/Components/Header";
 import ImageSlider from "@/Components/ImageSlider";
 import Metrics from "@/Components/Metrics";
@@ -23,6 +24,7 @@ export default function Home() {
       <Sponsors />
 
       <Articles />
+      <Footer />
     </div>
   );
 }

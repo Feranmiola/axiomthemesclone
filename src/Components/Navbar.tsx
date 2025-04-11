@@ -49,7 +49,12 @@ const Navbar = () => {
           <div className="flex items-center justify-center w-[40px] h-[40px] bg-blue-950 rounded-full">
             <PhoneCall size={20} color="white" />
           </div>
-          <p className="text-white text-xl font-bold">1 800 458 56 97</p>
+          <a
+            href="tel:+18408412569"
+            className="text-white text-xl font-bold cursor-pointer"
+          >
+            1 800 458 56 97
+          </a>
         </div>
 
         <button className="flex items-center justify-center px-8 py-2 text-white bg-blue-700 hover:bg-blue-900 transition ease-in-out rounded-3xl cursor-pointer duration-200">
