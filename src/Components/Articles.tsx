@@ -115,11 +115,15 @@ const Articles = () => {
           {blogPosts.map((post, index) => (
             <motion.div key={index} className="flex-shrink-0 w-[450px]">
               <div className="flex flex-col space-y-2">
-                <img
-                  src={post.image}
-                  alt="blog1"
-                  className="w-full h-auto rounded-3xl"
-                />
+                <div className="w-full h-[300px] overflow-hidden rounded-3xl">
+                  <motion.img
+                    src={post.image}
+                    alt="blog1"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
                 <p>{post.category}</p>
                 <p className="text-3xl font-medium">{post.title}</p>
                 <div className="flex flex-row items-center space-x-2">
