@@ -33,21 +33,44 @@ const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const sliderRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const extendedTestimonials = [
+    testimonials[testimonials.length - 1],
+    ...testimonials,
+    testimonials[0],
+  ];
 
   const handleNext = () => {
-    const nextIndex = (currentIndex + 1) % testimonials.length;
+    if (isAnimating) return;
+    setIsAnimating(true);
+    const nextIndex = currentIndex + 1;
     setCurrentIndex(nextIndex);
-    animate(x, -nextIndex * 800, { duration: 0.5 });
+    animate(x, -nextIndex * 800, { duration: 0.5 }).then(() => {
+      if (nextIndex === extendedTestimonials.length - 1) {
+        setCurrentIndex(1);
+        x.set(-800);
+      }
+      setIsAnimating(false);
+    });
   };
 
   const handlePrev = () => {
-    const prevIndex =
-      (currentIndex - 1 + testimonials.length) % testimonials.length;
+    if (isAnimating) return;
+    setIsAnimating(true);
+    const prevIndex = currentIndex - 1;
     setCurrentIndex(prevIndex);
-    animate(x, -prevIndex * 800, { duration: 0.5 });
+    animate(x, -prevIndex * 800, { duration: 0.5 }).then(() => {
+      if (prevIndex === 0) {
+        setCurrentIndex(extendedTestimonials.length - 2);
+        x.set(-(extendedTestimonials.length - 2) * 800);
+      }
+      setIsAnimating(false);
+    });
   };
 
   const handleDragEnd = (event: any, info: any) => {
+    if (isAnimating) return;
     const threshold = 100;
     if (info.offset.x > threshold) {
       handlePrev();
@@ -58,8 +81,15 @@ const Testimonial = () => {
     }
   };
 
+  // Calculate the real index for the dots (accounting for the clones)
+  const getRealIndex = () => {
+    if (currentIndex === 0) return testimonials.length - 1;
+    if (currentIndex === extendedTestimonials.length - 1) return 0;
+    return currentIndex - 1;
+  };
+
   return (
-    <div className="w-full flex items-center justify-center py-20">
+    <div className="w-full flex flex-col items-center justify-center py-20">
       <div className="flex flex-row items-center justify-center space-x-5">
         <div
           className="p-2 border rounded-full cursor-pointer hover:bg-gray-100 transition-colors"
@@ -76,7 +106,7 @@ const Testimonial = () => {
             className="flex"
             onDragEnd={handleDragEnd}
           >
-            {testimonials.map((testimonial, index) => (
+            {extendedTestimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
                 className="w-[800px] flex-shrink-0 flex flex-col items-center space-y-5"
@@ -110,6 +140,17 @@ const Testimonial = () => {
         >
           <ArrowRight />
         </div>
+      </div>
+
+      <div className="flex space-x-2 mt-8">
+        {testimonials.map((_, index) => (
+          <div
+            key={index}
+            className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+              index === getRealIndex() ? "bg-blue-500" : "bg-gray-300"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
