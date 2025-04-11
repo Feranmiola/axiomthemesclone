@@ -35,7 +35,7 @@ const ScrollToTop = () => {
       }`}
     >
       <div
-        className="rounded-full p-2 bg-[#070334] flex items-center justify-center cursor-pointer hover:bg-[#0a044a] transition-colors duration-200"
+        className="rounded-full p-4 bg-[#070334] flex items-center justify-center cursor-pointer hover:bg-[#0a044a] transition-colors duration-200"
         onClick={scrollToTop}
       >
         <ArrowUp color="white" />

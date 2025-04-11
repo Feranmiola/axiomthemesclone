@@ -10,6 +10,7 @@ import Subscribe from "@/Components/Subscribe";
 import Testimonial from "@/Components/Testimonial";
 import WhoWeAre from "@/Components/WhoWeAre";
 import ScrollToTop from "@/Components/ScrollToTop";
+import ChatWithUs from "@/Components/ChatWithUs";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <Articles />
       <Footer />
       <ScrollToTop />
+      <ChatWithUs />
     </div>
   );
 }
