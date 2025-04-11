@@ -1,3 +1,4 @@
+import Articles from "@/Components/Articles";
 import CreativeAgency from "@/Components/CreativeAgency";
 import CreativeSolutions from "@/Components/CreativeSolutions";
 import Header from "@/Components/Header";
@@ -20,6 +21,8 @@ export default function Home() {
       <Testimonial />
       <WhoWeAre />
       <Sponsors />
+
+      <Articles />
     </div>
   );
 }
