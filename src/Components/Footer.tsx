@@ -9,10 +9,7 @@ const Footer = () => {
   const isInView = useInView(containerRef, { once: true, amount: 0.3 });
 
   return (
-    <div
-      id="footer"
-      className="w-full h-[600px] relative flex items-center justify-center bg-[#080E17]"
-    >
+    <div className="w-full h-[600px] relative flex items-center justify-center bg-[#080E17]">
       <div className="custom-shape-divider-top-1744380682">
         <svg
           data-name="Layer 1"
@@ -29,6 +26,7 @@ const Footer = () => {
 
       <div
         ref={containerRef}
+        id="footer"
         className="flex w-full max-w-[65%] flex-col items-center h-full justify-between py-10 pt-[200px]"
       >
         <motion.div
