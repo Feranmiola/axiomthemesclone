@@ -40,12 +40,14 @@ const Metric = ({ end, label }: MetricProps) => {
   return (
     <div ref={ref} className="relative flex items-center justify-center w-1/8">
       {/* Label */}
-      <p className="absolute text-xl text-black font-medium top-1/2 -translate-y-1/2 z-10">
+      <p className="absolute text-2xl text-black font-medium top-1/2 -translate-y-1/2 z-10">
         {label}
       </p>
 
       {/* Big Number */}
-      <p className="text-[120px] text-black  opacity-20 select-none">{count}</p>
+      <p className="text-[180px] text-white font-semibold opacity-70 select-none">
+        {count}
+      </p>
     </div>
   );
 };
@@ -59,12 +61,12 @@ const Metrics = () => {
   ];
 
   return (
-    <div className="flex w-full justify-center items-center space-x-3 py-10">
+    <div className="flex w-full justify-center items-center space-x-5 py-10">
       {data.map((item, index) => (
         <React.Fragment key={index}>
           <Metric end={item.end} label={item.label} />
           {index < data.length - 1 && (
-            <div className="h-[60px] w-px bg-black opacity-20" />
+            <div className="h-[100px] w-px bg-black opacity-20" />
           )}
         </React.Fragment>
       ))}

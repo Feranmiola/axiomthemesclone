@@ -2,6 +2,7 @@ import CreativeAgency from "@/Components/CreativeAgency";
 import CreativeSolutions from "@/Components/CreativeSolutions";
 import Header from "@/Components/Header";
 import Metrics from "@/Components/Metrics";
+import Sponsors from "@/Components/Sponsors";
 import Subscribe from "@/Components/Subscribe";
 import WhoWeAre from "@/Components/WhoWeAre";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <CreativeSolutions />
       <Subscribe />
       <WhoWeAre />
+      <Sponsors />
     </div>
   );
 }
