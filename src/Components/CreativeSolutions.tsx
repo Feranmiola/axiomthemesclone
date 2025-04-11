@@ -26,9 +26,13 @@ const CreativeSolutions = () => {
               quae.
             </p>
 
-            <p className="font-semibold underline  cursor-pointer underline-offset-8 ">
+            <a
+              href="mailto:info@email.com"
+              className="text-black cursor-pointer hover:font-medium transition-all ease-in-out duration-200 relative group w-max"
+            >
               Read More
-            </p>
+              <span className="absolute left-0 bottom-0 h-[1px] bg-black w-full group-hover:w-0 transition-all duration-300 origin-left group-hover:transition-all group-hover:duration-300 group-hover:origin-left"></span>
+            </a>
           </div>
         </div>
       </div>
