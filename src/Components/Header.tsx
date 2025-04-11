@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 const Header = () => {
   return (
     <div className="h-screen w-full">
-      <div className="flex flex-col w-full h-screen homeBackground bg-white relative outline-none">
+      <div className="flex flex-col w-full h-screen homeBackground bg-[#E0E4E9] relative outline-none">
         <Navbar />
         <div className="h-full w-full items-center justify-center flex flex-col space-y-3">
           <p className="text-[72px] text-white font-bold leading-none text-center">
