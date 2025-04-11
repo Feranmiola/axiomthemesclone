@@ -1,5 +1,5 @@
 import CreativeAgency from "@/Components/CreativeAgency";
-import CreativeSolutions from "@/Components/CreativeSOlutions";
+import CreativeSolutions from "@/Components/CreativeSolutions";
 import Header from "@/Components/Header";
 import Metrics from "@/Components/Metrics";
 
