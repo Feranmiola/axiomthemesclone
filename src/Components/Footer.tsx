@@ -9,7 +9,10 @@ const Footer = () => {
   const isInView = useInView(containerRef, { once: true, amount: 0.3 });
 
   return (
-    <div className="w-full h-[600px] relative flex items-center justify-center bg-[#080E17]">
+    <div
+      id="footer"
+      className="w-full h-[600px] relative flex items-center justify-center bg-[#080E17]"
+    >
       <div className="custom-shape-divider-top-1744380682">
         <svg
           data-name="Layer 1"

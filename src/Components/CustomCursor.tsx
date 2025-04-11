@@ -8,6 +8,7 @@ const CustomCursor = () => {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   const [isSliderHovered, setIsSliderHovered] = useState(false);
+  const [isFooterHovered, setIsFooterHovered] = useState(false);
 
   const springConfig = { damping: 20, stiffness: 200 };
   const springX = useSpring(cursorX, springConfig);
@@ -29,16 +30,26 @@ const CustomCursor = () => {
     const handleMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const sliderElement = target.closest("#slider");
+      const footerElement = target.closest("#footer");
+
       if (sliderElement) {
         setIsSliderHovered(true);
+      }
+      if (footerElement) {
+        setIsFooterHovered(true);
       }
     };
 
     const handleMouseLeave = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const sliderElement = target.closest("#slider");
+      const footerElement = target.closest("#footer");
+
       if (!sliderElement) {
         setIsSliderHovered(false);
+      }
+      if (!footerElement) {
+        setIsFooterHovered(false);
       }
     };
 
@@ -62,9 +73,9 @@ const CustomCursor = () => {
       }}
     >
       <motion.div
-        className={`rounded-full bg-[#000000] flex items-center justify-center relative ${
+        className={`rounded-full flex items-center justify-center relative ${
           isSliderHovered ? "w-12 h-12" : "w-2 h-2"
-        }`}
+        } ${isFooterHovered ? "bg-white" : "bg-[#000000]"}`}
         animate={{
           scale: isSliderHovered ? 1 : 1,
         }}
