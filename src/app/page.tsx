@@ -5,6 +5,7 @@ import ImageSlider from "@/Components/ImageSlider";
 import Metrics from "@/Components/Metrics";
 import Sponsors from "@/Components/Sponsors";
 import Subscribe from "@/Components/Subscribe";
+import Testimonial from "@/Components/Testimonial";
 import WhoWeAre from "@/Components/WhoWeAre";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <CreativeSolutions />
       <ImageSlider />
       <Subscribe />
+      <Testimonial />
       <WhoWeAre />
       <Sponsors />
     </div>
