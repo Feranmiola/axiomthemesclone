@@ -29,7 +29,7 @@ const Subscribe = () => {
             </label>
           </div>
         </div>
-        <button className="flex flex-row items-center justify-center text-white space-x-2 px-8 py-3 rounded-3xl bg-blue-700 cursor-pointer">
+        <button className="flex flex-row items-center justify-center text-white space-x-2 px-8 py-3 h-max rounded-3xl bg-blue-700 cursor-pointer">
           <div className="pr-2">
             <SendIcon color="white" />
           </div>
