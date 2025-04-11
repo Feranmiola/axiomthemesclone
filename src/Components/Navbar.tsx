@@ -1,10 +1,48 @@
 "use client";
-import { PhoneCall, Search, XIcon } from "lucide-react";
+import { ChevronRight, PhoneCall, Search, XIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Sheet, SheetContent } from "./ui/sheet";
 
 const Navbar = () => {
   const [isSearchSheetOpen, setIsSearchSheetOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [hoveredSubItem, setHoveredSubItem] = useState<string | null>(null);
+
+  const menuItems = {
+    Home: [
+      { text: "Home 1", hasSubmenu: false },
+      { text: "Home 2", hasSubmenu: false },
+      {
+        text: "Home 3",
+        hasSubmenu: true,
+        subItems: ["Sub 1", "Sub 2", "Sub 3"],
+      },
+    ],
+    Pages: [
+      { text: "About Us", hasSubmenu: false },
+      { text: "Our Team", hasSubmenu: true, subItems: ["Team 1", "Team 2"] },
+      {
+        text: "Services",
+        hasSubmenu: true,
+        subItems: ["Service 1", "Service 2"],
+      },
+    ],
+    Portfolio: [
+      { text: "Grid View", hasSubmenu: false },
+      { text: "Masonry", hasSubmenu: false },
+      {
+        text: "Projects",
+        hasSubmenu: true,
+        subItems: ["Project 1", "Project 2"],
+      },
+    ],
+    Blog: [
+      { text: "Blog Grid", hasSubmenu: false },
+      { text: "Blog List", hasSubmenu: false },
+      { text: "Categories", hasSubmenu: true, subItems: ["Cat 1", "Cat 2"] },
+    ],
+  };
+
   return (
     <div className="w-full flex flex-row p-10 items-center justify-between">
       <div className="flex flex-row space-x-18">
@@ -17,22 +55,74 @@ const Navbar = () => {
         </a>
 
         <div className="flex flex-row space-x-6 items-center">
-          <p className="relative text-white cursor-pointer text-sm group overflow-hidden">
-            Home
-            <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
-          </p>
-          <p className="relative text-white cursor-pointer text-sm group overflow-hidden">
-            Pages
-            <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
-          </p>
-          <p className="relative text-white cursor-pointer text-sm group overflow-hidden">
-            Portfolio
-            <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
-          </p>
-          <p className="relative text-white cursor-pointer text-sm group overflow-hidden">
-            Blog
-            <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
-          </p>
+          {Object.keys(menuItems).map((item) => (
+            <div
+              key={item}
+              className="relative group"
+              onMouseEnter={() => setHoveredItem(item)}
+              onMouseLeave={() => {
+                setHoveredItem(null);
+                setHoveredSubItem(null);
+              }}
+            >
+              <div className="flex flex-col">
+                <p className="relative text-white cursor-pointer text-sm overflow-hidden">
+                  {item}
+                  <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
+                </p>
+
+                {hoveredItem === item && (
+                  <>
+                    <div className="absolute top-full left-0 h-4 w-full" />
+                    <div className="absolute top-[calc(100%+1rem)] left-0 w-[200px] bg-[#070334] rounded-2xl py-4 z-50">
+                      {menuItems[item as keyof typeof menuItems].map(
+                        (menuItem) => (
+                          <div
+                            key={menuItem.text}
+                            className="relative"
+                            onMouseEnter={() =>
+                              menuItem.hasSubmenu &&
+                              setHoveredSubItem(menuItem.text)
+                            }
+                            onMouseLeave={() => setHoveredSubItem(null)}
+                          >
+                            <a
+                              href="#"
+                              className="flex items-center justify-between text-[#9196A5] hover:text-white py-2 px-4 transition-colors duration-200"
+                            >
+                              {menuItem.text}
+                              {menuItem.hasSubmenu && (
+                                <ChevronRight
+                                  size={16}
+                                  className="text-[#9196A5]"
+                                />
+                              )}
+                            </a>
+
+                            {hoveredSubItem === menuItem.text &&
+                              menuItem.hasSubmenu && (
+                                <div className="absolute top-0 left-full w-[200px] bg-[#070334] rounded-2xl p-4">
+                                  {menuItem.subItems?.map((subItem) => (
+                                    <a
+                                      key={subItem}
+                                      href="#"
+                                      className="block text-[#9196A5] hover:text-white py-2 transition-colors duration-200"
+                                    >
+                                      {subItem}
+                                    </a>
+                                  ))}
+                                </div>
+                              )}
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          ))}
+
           <p className="relative text-white cursor-pointer text-sm group overflow-hidden">
             Contacts
             <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300 origin-left"></span>
