@@ -13,7 +13,7 @@ const Subscribe = () => {
       <div className="flex flex-row space-x-3">
         <div className="flex flex-col space-y-2">
           <input
-            className="bg-white w-[420px] h-[48px] rounded-3xl shadow-md  px-3"
+            className="bg-white w-[420px] h-[48px] rounded-3xl shadow-sm outline-none focus:outline-none  px-3"
             type="email"
             placeholder="Enter Your Email Address"
           />
