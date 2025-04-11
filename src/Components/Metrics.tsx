@@ -38,7 +38,7 @@ const Metric = ({ end, label }: MetricProps) => {
   }, [isInView, hasAnimated, end]);
 
   return (
-    <div ref={ref} className="relative flex items-center justify-center w-1/8">
+    <div ref={ref} className="relative flex items-center justify-center w-1/4">
       {/* Label */}
       <p className="absolute text-2xl text-black font-medium top-1/2 -translate-y-1/2 z-10">
         {label}
@@ -61,15 +61,17 @@ const Metrics = () => {
   ];
 
   return (
-    <div className="flex w-full justify-center items-center space-x-5 py-10">
-      {data.map((item, index) => (
-        <React.Fragment key={index}>
-          <Metric end={item.end} label={item.label} />
-          {index < data.length - 1 && (
-            <div className="h-[100px] w-px bg-black opacity-20" />
-          )}
-        </React.Fragment>
-      ))}
+    <div className="flex items-center justify-center w-full">
+      <div className="flex w-full justify-center items-center space-x-5 py-10 max-w-[70%]">
+        {data.map((item, index) => (
+          <React.Fragment key={index}>
+            <Metric end={item.end} label={item.label} />
+            {index < data.length - 1 && (
+              <div className="h-[100px] w-px bg-black opacity-20" />
+            )}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 };

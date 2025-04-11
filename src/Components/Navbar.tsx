@@ -1,7 +1,7 @@
 "use client";
 import { ChevronRight, PhoneCall, Search, XIcon } from "lucide-react";
 import React, { useState } from "react";
-import { Sheet, SheetContent } from "./ui/sheet";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isSearchSheetOpen, setIsSearchSheetOpen] = useState(false);
@@ -155,34 +155,68 @@ const Navbar = () => {
         </button>
       </div>
 
-      <Sheet open={isSearchSheetOpen} onOpenChange={setIsSearchSheetOpen}>
-        <SheetContent side="top" className="w-full bg-[#131921] h-[400px]">
-          <div className="flex flex-col w-full h-full items-center space-y-18 p-10">
-            <div className="flex flex-row w-full items-center justify-between">
-              <img
-                src="https://res.cloudinary.com/debiu7z1b/image/upload/v1744309237/logo-inverse2-nocopyright_a9hhgt.webp"
-                alt="logo"
-                className="w-[150px] h-auto"
-              />
+      <AnimatePresence>
+        {isSearchSheetOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/50 z-50"
+              onClick={() => setIsSearchSheetOpen(false)}
+            />
+            <motion.div
+              initial={{ y: "-100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed top-0 left-0 w-full bg-[#131921] h-[400px] z-50"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ delay: 0.2 }}
+                className="flex flex-col w-full h-full items-center space-y-18 p-10"
+              >
+                <div className="flex flex-row w-full items-center justify-between">
+                  <img
+                    src="https://res.cloudinary.com/debiu7z1b/image/upload/v1744309237/logo-inverse2-nocopyright_a9hhgt.webp"
+                    alt="logo"
+                    className="w-[150px] h-auto"
+                  />
 
-              <div onClick={() => setIsSearchSheetOpen(false)}>
-                <XIcon size={40} color="white" className="cursor-pointer" />
-              </div>
-            </div>
+                  <div onClick={() => setIsSearchSheetOpen(false)}>
+                    <XIcon size={40} color="white" className="cursor-pointer" />
+                  </div>
+                </div>
 
-            <div className="flex w-[70%] pb-4 border-b border-b-[#20262D]">
-              <div className="flex w-full flex-row items-center justify-between">
-                <input
-                  className="w-[70%] text-[#989CA9] text-2xl outline-none focus:outline-none "
-                  placeholder="Type anything and hit enter"
-                />
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex w-[70%] pb-4 border-b border-b-[#20262D]"
+                >
+                  <div className="flex w-full flex-row items-center justify-between">
+                    <input
+                      className="w-[70%] text-[#989CA9] text-2xl outline-none focus:outline-none bg-transparent"
+                      placeholder="Type anything and hit enter"
+                    />
 
-                <Search className="cursor-pointer" color="white" size={30} />
-              </div>
-            </div>
-          </div>
-        </SheetContent>
-      </Sheet>
+                    <Search
+                      className="cursor-pointer"
+                      color="white"
+                      size={30}
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
