@@ -134,6 +134,7 @@ const Articles = () => {
         ref={sliderRef}
         className="w-[1410px] overflow-hidden cursor-drag"
         initial={{ opacity: 0 }}
+        id="slider"
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.8, delay: 0.8 }}
       >

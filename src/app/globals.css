@@ -115,7 +115,6 @@
 @layer base {
   html {
     font-family: 'Poppins', sans-serif;
-    /* cursor: none; */
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Averia Sans Libre', cursive;
@@ -123,8 +122,15 @@
   body {
     @apply bg-background text-foreground;
   }
+  * {
+    /* cursor: none !important; */
+  }
 }
 
+
+#slider{
+  cursor: none !important;
+}
 .custom-shape-divider-bottom-1744318148 {
     position: absolute;
     bottom: 0;

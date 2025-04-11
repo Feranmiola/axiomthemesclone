@@ -37,11 +37,10 @@ const Header = () => {
           </motion.p>
 
           <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            whileHover={{ backgroundColor: "#3b82f6" }}
-            className="flex items-center justify-center px-7 py-3 font-semibold mt-5 mb-24 text-white bg-blue-400 rounded-3xl cursor-pointer transition-colors duration-200"
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="flex items-center justify-center px-7 py-3 font-semibold mt-5 mb-24 text-white bg-blue-400 rounded-3xl cursor-pointer transition-all ease-in-out hover:bg-[#3b82f6] "
           >
             Discover Now
           </motion.button>

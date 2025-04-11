@@ -28,7 +28,8 @@ const ImageSlider = () => {
     <div ref={containerRef} className="py-20">
       <motion.div
         ref={sliderRef}
-        className="flex justify-center cursor-move items-center overflow-hidden"
+        id="slider"
+        className="flex justify-center items-center overflow-hidden"
         whileTap={{ cursor: "grabbing" }}
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
